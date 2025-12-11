@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Santa 10K | Mint</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.12.0/dist/ethers.umd.min.js"></script>
+</head>
+
+<body>
+
+<div class="snow">
+  <div style="left:10%; animation-delay:0s;"></div>
+  <div style="left:25%; animation-delay:1s;"></div>
+  <div style="left:40%; animation-delay:2s;"></div>
+  <div style="left:60%; animation-delay:0.5s;"></div>
+  <div style="left:75%; animation-delay:1.8s;"></div>
+  <div style="left:90%; animation-delay:0.7s;"></div>
+</div>
+
+<header class="navbar">
+  <div>
+    <div class="nav-title">CYBER SANTA 10K</div>
+    <div class="nav-sub">Mint</div>
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a class="nav-active" href="mint.html">Mint</a>
+    <a href="about.html">About</a>
+    <a class="nav-cta" href="#" target="_blank">OpenSea</a>
+  </nav>
+</header>
+
+<main>
+<section class="section">
+  <h2 class="hero-title" style="font-size:48px;">Mint Cyber Santa</h2>
+
+  <p class="hero-sub">
+    Mint price: <strong>0.0001 ETH</strong> · Base Network
+  </p>
+
+  <div id="supply" class="hero-sub" style="margin-bottom:18px;">
+    Loading supply…
+  </div>
+
+  <div class="mint-card">
+    <div class="mint-label">Quantity</div>
+
+    <input id="qty" type="number" class="mint-input" value="1" min="1" max="20">
+
+    <button id="connectBtn" class="btn-primary" style="width:100%;margin-top:10px;">
+      Connect Wallet
+    </button>
+
+    <button id="mintBtn" class="btn-outline" style="width:100%;margin-top:12px;" disabled>
+      Mint Cyber Santa
+    </button>
+
+    <div id="status" style="margin-top:15px;">Status: Idle</div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  Contract: to be updated
+</footer>
+
+<script>
+const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; 
+const RPC_URL = "https://mainnet.base.org";
+
+const ABI = [
+  "function mint(uint256 quantity) external payable",
+  "function MINT_PRICE() view returns (uint256)",
+  "function totalMinted() view returns (uint256)",
+  "function MAX_SUPPLY() view returns (uint256)"
+];
+</script>
+
+</body>
+</html>
