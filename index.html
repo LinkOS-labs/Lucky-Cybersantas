@@ -1,58 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Cyber Santa 10K | Home</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <title>Cyber Santa 10K | Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- AURORA -->
-<div class="aurora"></div>
+<div class="body-aurora"></div>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <img src="santa.png">
+<!-- BLIZZARD ULTRA -->
+<div class="snow-layer">
+  <!-- 60 snowflakes -->
+  <script>
+    for(let i=0;i<60;i++){
+      document.write(
+        `<div class="flake" style="
+          left:${Math.random()*100}%;
+          width:${3+Math.random()*8}px;
+          height:${3+Math.random()*8}px;
+          animation-duration:${4+Math.random()*10}s;
+          animation-delay:${Math.random()*5}s;
+        "></div>`
+      );
+    }
+  </script>
 </div>
 
-<!-- LIGHT INTERACTION -->
-<div class="light-glow"></div>
-
-<!-- NAV -->
-<div class="navbar">
-  <a href="index.html">Home</a>
-  <a href="mint.html">Mint</a>
-  <a href="about.html">About</a>
-  <a href="#" target="_blank">OpenSea</a>
+<!-- GOLD PARTICLES -->
+<div class="particles">
+  <div style="left:20%; top:25%;"></div>
+  <div style="left:55%; top:50%;"></div>
+  <div style="left:80%; top:65%;"></div>
+  <div style="left:40%; top:80%;"></div>
 </div>
 
-<!-- SNOW 3D ------------------------------------------------>
-<div class="snow-layer" id="snow"></div>
+<div class="page-frame">
 
-<!-- HERO --------------------------------------------------->
+<header class="navbar">
+  <div>
+    <div class="nav-title">CYBER SANTA 10K</div>
+    <div class="nav-sub">Best Luck for 2026 · On Base</div>
+  </div>
+
+  <nav class="nav-links">
+    <a class="nav-active" href="index.html">Home</a>
+    <a href="mint.html">Mint</a>
+    <a href="about.html">About</a>
+    <a class="nav-cta" href="#" target="_blank">OpenSea</a>
+  </nav>
+</header>
+
+<main>
+
 <section class="hero">
 
-  <div class="cyber-wrapper">
-    <div class="holo"></div>
-    <img src="santa.png" class="cyber-santa" id="santa">
-  </div>
+  <div class="holo"></div>
+  <img src="santa.png" class="cyber-santa">
 
   <h1 class="hero-title">CYBER SANTA 10K</h1>
 
   <p class="hero-sub">
-    A hyper-premium Christmas NFT series forged on Base.<br>
-    Cyber armor, winter energy, and festive blessings for 2026.
+    From the frozen blockchain peaks of North Node-1, Santa awakens in<br>
+    cyber armor, aurora-lit technology and on-chain festive power.  
+    The <strong>Blessing Protocol</strong> is real — and 2026 is waiting.
   </p>
 
-  <a href="mint.html" class="btn-primary">Mint Now</a>
+  <a href="mint.html" class="btn-primary">Mint Your Blessing</a>
 
 </section>
 
+</main>
+
 <footer class="footer">
-Cyber Santa 10K · Base Network
+  Cyber Santa 10K · Built on Base · 2026 Blessing Protocol
 </footer>
+
+</div>
 
 </body>
 </html>
