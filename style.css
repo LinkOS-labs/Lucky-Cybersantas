@@ -7,59 +7,49 @@
   --sub: #d7d7d7;
 }
 
-/* GLOBAL ---------------------------------------------------- */
-
-html {
-  --mx: 50%;
-  --my: 50%;
-}
-
+/* BACKGROUND AURORA */
 body {
   margin: 0;
+  background: #02060d;
   font-family: "Inter", sans-serif;
   color: var(--white);
-  background: #02060d;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-/* Aurora fondo animado */
 .aurora {
   position: fixed;
   inset: 0;
   background: linear-gradient(130deg,#071322,#0f2740,#1b406b,#08101c);
   background-size: 350% 350%;
   animation: auroraAnim 18s ease-in-out infinite;
-  z-index: -5;
+  z-index: -10;
 }
 
 @keyframes auroraAnim {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 0 50; }
+  50% { background-position: 100% 50; }
+  100% { background-position: 0 50; }
 }
 
-/* Luz dinámica que sigue al ratón */
+/* LIGHT GLOW FOLLOW MOUSE */
 .light-glow {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at var(--mx) var(--my),
-    rgba(255,200,120,0.25), transparent 65%);
-  mix-blend-mode: screen;
   pointer-events: none;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,200,120,0.25), transparent 65%);
   z-index: 0;
 }
 
-/* LOADING --------------------------------------------------- */
-
+/* LOADER */
 #loader {
   position: fixed;
   inset: 0;
-  background: #010409;
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99;
-  transition: opacity 0.8s ease;
+  z-index: 9999;
+  transition: opacity .8s ease;
 }
 
 #loader.hidden {
@@ -69,155 +59,80 @@ body {
 
 #loader img {
   width: 150px;
-  animation: loaderPulse 2s ease-in-out infinite;
+  animation: pulse 2s infinite ease-in-out;
 }
 
-@keyframes loaderPulse {
-  0% { transform: scale(0.9); opacity: 0.5; }
+@keyframes pulse {
+  0% { transform: scale(.9); opacity: .4; }
   50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(.9); opacity: .4; }
 }
 
-/* NAV ------------------------------------------------------- */
-
+/* NAVBAR */
 .navbar {
   position: relative;
   z-index: 10;
-  padding: 20px;
   display: flex;
   justify-content: center;
   gap: 32px;
+  padding: 20px;
 }
 
 .navbar a {
-  color: var(--white);
-  text-decoration: none;
   font-weight: 700;
-  font-size: 18px;
-  opacity: 0.8;
-  text-shadow: 0 0 10px rgba(255,200,120,0.7);
-  transition: 0.2s;
+  font-size: 20px;
+  color: var(--white);
+  opacity: .8;
+  text-decoration: none;
+  transition: .2s;
 }
 
 .navbar a:hover,
 .navbar a.active {
-  opacity: 1;
   color: var(--gold);
+  opacity: 1;
 }
 
-/* SNOW 3D --------------------------------------------------- */
-
-.snow-layer {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
+/* PAGE FRAME */
+.page-frame {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid rgba(255,255,255,.1);
+  box-shadow: 0 0 25px rgba(255,255,255,.15);
+  border-radius: 20px;
+  padding-bottom: 40px;
+  margin-top: 20px;
   z-index: 5;
 }
 
-.flake {
-  position: absolute;
-  top: -10px;
-  background: #ffffff;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 6px #ffffff);
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes fall {
-  0% {
-    transform: translateY(-10px) translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(110vh) translateX(200px) rotate(360deg);
-  }
-}
-
-/* PARTICULAS DORADAS --------------------------------------- */
-
-.particles div {
-  width: 7px;
-  height: 7px;
-  position: absolute;
-  background: var(--gold);
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: sparkle 3s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-  0% { transform: scale(0.4); opacity: 0.4; }
-  50% { transform: scale(1.8); opacity: 1; }
-  100% { transform: scale(0.4); opacity: 0.5; }
-}
-
-/* FRAME ----------------------------------------------------- */
-
-.page-frame {
-  position: relative;
-  margin: 0 auto;
-  max-width: 1100px;
-  border-radius: 20px;
-  border: 2px solid rgba(255,255,255,0.15);
-  box-shadow: 0 0 25px rgba(255,255,255,0.2);
-  margin-top: 20px;
-  padding-bottom: 40px;
-  z-index: 9;
-}
-
-/* HERO ------------------------------------------------------ */
-
+/* HERO */
 .hero {
   text-align: center;
-  padding: 80px 20px 40px;
-  position: relative;
+  padding: 80px 20px;
 }
 
 .hero-title {
   font-family: "Mountains of Christmas", cursive;
-  font-size: 72px;
+  font-size: 70px;
   color: var(--gold);
-  text-shadow: 0 0 30px rgba(255,225,130,1);
-  margin-top: 10px;
+  text-shadow: 0 0 30px rgba(255,220,120,1);
 }
 
 .hero-sub {
-  font-size: 22px;
-  color: var(--sub);
   max-width: 800px;
   margin: 20px auto;
-  line-height: 1.8;
+  font-size: 22px;
+  color: var(--sub);
+  line-height: 1.7;
 }
 
-/* SANTA + HOLOGRAMA + FISICA -------------------------------- */
-
+/* SANTA FLOATING */
 .cyber-wrapper {
   position: relative;
   width: 320px;
   height: 320px;
-  margin: 0 auto 10px;
-}
-
-.holo {
-  position: absolute;
-  width: 360px;
-  height: 360px;
-  left: 50%;
-  top: 53%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
-  border-radius: 50%;
-  filter: blur(35px);
-  animation: holoPulse 3s ease-in-out infinite;
-  z-index: 0;
-}
-
-@keyframes holoPulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-  50% { transform: translate(-50%, -50%) scale(1.25); opacity: 0.9; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  margin: 0 auto;
 }
 
 .cyber-santa {
@@ -228,32 +143,70 @@ body {
   filter: drop-shadow(0 0 35px var(--gold));
 }
 
-/* BOTON ------------------------------------------------------ */
+/* HOLO EFFECT */
+.holo {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,.25), transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: holoPulse 4s infinite ease-in-out;
+}
 
+@keyframes holoPulse {
+  0% { transform: translate(-50%,-50%) scale(.9); opacity:.4; }
+  50% { transform: translate(-50%,-50%) scale(1.2); opacity:.9; }
+  100%{ transform: translate(-50%,-50%) scale(.9); opacity:.4; }
+}
+
+/* BUTTON */
 .btn-primary {
   background: var(--red);
-  padding: 16px 36px;
-  border-radius: 14px;
-  color: #fff;
+  padding: 16px 32px;
+  color: white;
   text-decoration: none;
-  display: inline-block;
-  margin-top: 24px;
+  font-weight: 800;
   font-size: 22px;
-  font-weight: 700;
-  box-shadow: 0 0 22px rgba(255,60,60,0.7);
-  transition: 0.25s;
+  border-radius: 14px;
+  display: inline-block;
+  box-shadow: 0 0 25px rgba(255,60,60,.7);
+  transition:.2s;
 }
 
 .btn-primary:hover {
   transform: scale(1.07);
-  box-shadow: 0 0 32px rgba(255,180,180,1);
 }
 
-/* FOOTER ----------------------------------------------------- */
-
+/* FOOTER */
 .footer {
   text-align: center;
+  padding: 30px;
   color: var(--sub);
-  font-size: 16px;
-  margin-top: 40px;
+  font-size: 18px;
+}
+
+/* SNOW FLAKES */
+.snow-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.flake {
+  position: absolute;
+  top: -10px;
+  background: #fff;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 6px #fff);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10px) translateX(0); }
+  to   { transform: translateY(110vh) translateX(200px); }
 }
