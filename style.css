@@ -1,52 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Inter:wght@400;600;800&display=swap');
 
+/* ROOT COLORS */
 :root {
-  --bg: #0b0b10;
-  --card-bg: rgba(20, 20, 30, 0.85);
-  --text: #fefefe;
-  --sub: #d8d8d8;
-  --xmas-red: #d32626;
-  --xmas-gold: #ffcc66;
-  --glow: 0 0 20px rgba(255, 60, 60, 0.6),
-          0 0 40px rgba(255, 200, 80, 0.4);
+  --gold: #ffcf6e;
+  --red: #d32626;
+  --white: #ffffff;
+  --subtext: #d7d7d7;
+  --glass: rgba(0,0,0,0.55);
 }
 
-/* GLOBAL BODY */
+/* AURORA BACKGROUND ANIMATION */
 body {
   margin: 0;
+  color: var(--white);
   font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at center, #13131b 0%, #050508 100%);
-  color: var(--text);
-  position: relative;
+  background: linear-gradient(120deg, #08101b, #0d1a28, #102033);
+  background-size: 400% 400%;
+  animation: aurora 14s ease-in-out infinite;
   overflow-x: hidden;
 }
 
-/* SNOW LAYER */
-.snow {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 5;
-}
-
-.snow div {
-  position: absolute;
-  top: -10px;
-  width: 10px;
-  height: 10px;
-  background: white;
-  opacity: 0.9;
-  border-radius: 50%;
-  animation: fall 8s linear infinite;
-}
-
-@keyframes fall {
-  0% { transform: translateY(-10px) translateX(0); }
-  100% { transform: translateY(110vh) translateX(60px); }
+@keyframes aurora {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* NAVBAR */
@@ -54,122 +31,192 @@ body {
   display:flex;
   justify-content:space-between;
   padding:24px 30px;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid rgba(255,255,255,0.15);
-  z-index: 10;
+  background:var(--glass);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,0.12);
 }
 
 .nav-title {
   font-family:"Mountains of Christmas", cursive;
-  font-size:34px;
-  color:var(--xmas-gold);
-  text-shadow:var(--glow);
+  font-size:38px;
+  color:var(--gold);
+  text-shadow:0 0 20px rgba(255, 200, 80, 0.8);
 }
 
 .nav-sub {
-  font-size:15px;
-  color:var(--xmas-red);
+  font-size:14px;
+  color:var(--red);
 }
 
 .nav-links a {
-  color:var(--text);
-  margin-left:18px;
+  color:var(--white);
   text-decoration:none;
+  margin-left:20px;
   font-weight:600;
 }
 
-.nav-links a:hover {
-  color:var(--xmas-gold);
-  text-shadow:var(--glow);
+.nav-links a:hover,
+.nav-active {
+  color:var(--gold);
+  text-shadow:0 0 14px rgba(255, 200, 80, 0.9);
 }
 
 .nav-cta {
   padding:8px 18px;
-  background:var(--xmas-red);
+  background:var(--red);
   color:white !important;
   border-radius:8px;
-  box-shadow:var(--glow);
+  box-shadow:0 0 14px rgba(255,60,60,0.5);
+}
+
+/* CYBER SANTA IMAGE ANIMATION */
+.cyber-santa {
+  width: 280px;
+  animation: santaEnter 2.3s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.7);
+  filter: drop-shadow(0 0 25px #ffcf6e);
+}
+
+@keyframes santaEnter {
+  0% { opacity: 0; transform: scale(0.6) translateY(40px); }
+  70% { opacity: 1; transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* MULTI-LAYER SNOW */
+.snow, .snow2, .snow3 {
+  pointer-events:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:5;
+}
+
+.snow div, .snow2 div, .snow3 div {
+  position:absolute;
+  top:-10px;
+  background:white;
+  border-radius:50%;
+}
+
+/* LAYER 1 — slow */
+.snow div {
+  width:8px;height:8px;
+  opacity:0.6;
+  animation: fall1 12s linear infinite;
+}
+@keyframes fall1 {
+  from { transform: translateY(-10px) translateX(0); }
+  to { transform: translateY(110vh) translateX(40px); }
+}
+
+/* LAYER 2 — medium */
+.snow2 div {
+  width:6px;height:6px;
+  opacity:0.9;
+  animation: fall2 8s linear infinite;
+}
+@keyframes fall2 {
+  from { transform: translateY(-10px) translateX(0); }
+  to { transform: translateY(110vh) translateX(90px); }
+}
+
+/* LAYER 3 — fast */
+.snow3 div {
+  width:4px;height:4px;
+  opacity:0.7;
+  animation: fall3 5s linear infinite;
+}
+@keyframes fall3 {
+  from { transform: translateY(-10px) translateX(0); }
+  to { transform: translateY(110vh) translateX(140px); }
+}
+
+/* GOLD PARTICLES */
+.particles div {
+  width:5px;height:5px;
+  position:absolute;
+  background:var(--gold);
+  border-radius:50%;
+  opacity:0.7;
+  animation: sparkle 3s ease-in-out infinite;
+}
+@keyframes sparkle {
+  0% { transform: scale(0.5); opacity:0.4; }
+  50% { transform: scale(1.5); opacity:1; }
+  100% { transform: scale(0.5); opacity:0.5; }
 }
 
 /* HERO */
 .hero {
   text-align:center;
-  padding:80px 20px;
+  padding:70px 20px;
 }
 
 .hero-title {
   font-family:"Mountains of Christmas", cursive;
   font-size:64px;
-  color:var(--xmas-gold);
-  text-shadow:var(--glow);
+  color:var(--gold);
+  text-shadow:0 0 22px rgba(255, 210, 120, 0.9);
 }
 
 .hero-sub {
-  color:var(--sub);
-  max-width:600px;
-  margin:10px auto;
-  font-size:20px;
-  line-height: 1.6;
+  color:var(--subtext);
+  font-size:21px;
+  max-width:700px;
+  margin:20px auto;
+  line-height:1.7;
 }
 
-/* ACTION BUTTONS */
+/* MINT CARD */
+.mint-card {
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(8px);
+  padding:30px;
+  margin:auto;
+  width:350px;
+  border-radius:16px;
+  box-shadow:0 0 25px rgba(255,200,120,0.4);
+}
+
+.mint-input {
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  background:#111;
+  border:1px solid #333;
+  color:white;
+}
+
+/* BUTTONS */
 .btn-primary {
-  background:var(--xmas-red);
+  background:var(--red);
   padding:12px 26px;
   border:none;
-  font-size:20px;
   border-radius:10px;
+  font-size:20px;
   color:white;
-  box-shadow:var(--glow);
-  transition: 0.2s;
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
+  box-shadow:0 0 20px rgba(255, 60, 60, 0.5);
 }
 
 .btn-outline {
   background:transparent;
   padding:12px 26px;
-  border:2px solid var(--xmas-gold);
-  font-size:20px;
+  border:2px solid var(--gold);
   border-radius:10px;
-  color:var(--xmas-gold);
-  transition:0.2s;
+  font-size:20px;
+  color:var(--gold);
 }
 
 .btn-outline:hover {
-  background:var(--xmas-gold);
+  background:var(--gold);
   color:black;
-}
-
-/* MINT CARD */
-.mint-card {
-  background:var(--card-bg);
-  padding:30px;
-  margin:auto;
-  width:330px;
-  border-radius:16px;
-  box-shadow:var(--glow);
-  z-index: 10;
-}
-
-/* INPUT */
-.mint-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  background: #111;
-  border: 1px solid #333;
-  color: white;
-  font-size: 18px;
 }
 
 /* FOOTER */
 .footer {
   text-align:center;
-  margin-top:40px;
-  padding:20px;
-  color:var(--sub);
+  padding:25px;
+  color:var(--subtext);
 }
