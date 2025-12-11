@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cyber Santa 10K | Mint</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="/Lucky-Cybersantas/style.css">
+  <script defer src="/Lucky-Cybersantas/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.12.0/dist/ethers.umd.min.js"></script>
 </head>
 
@@ -14,7 +14,7 @@
 <div class="light-glow"></div>
 
 <div id="loader">
-  <img src="santa.png" alt="Loading Cyber Santa">
+  <img src="/Lucky-Cybersantas/santa.png">
 </div>
 
 <div class="snow-layer" id="snow-layer"></div>
@@ -22,23 +22,22 @@
 <div class="page-frame">
 
   <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="mint.html" class="active">Mint</a>
-    <a href="about.html">About</a>
+    <a href="/Lucky-Cybersantas/index.html">Home</a>
+    <a href="/Lucky-Cybersantas/mint.html" class="active">Mint</a>
+    <a href="/Lucky-Cybersantas/about.html">About</a>
     <a href="#" target="_blank">OpenSea</a>
   </nav>
 
   <section class="hero">
-
     <h1 class="hero-title">Mint Your Cyber Santa</h1>
 
     <p class="hero-sub">
       Mint price: <strong>0.0001 ETH</strong> on Base.<br>
-      The Blessing Protocol for 2026 activates on mint.
+      Blessing Protocol activates on mint.
     </p>
 
-    <div class="mint-card" style="max-width:360px;margin:30px auto 0;">
-      <div style="margin-bottom:10px;font-weight:700;">Quantity</div>
+    <div class="mint-card" style="max-width:360px;margin:20px auto;">
+      <div style="margin-bottom:8px;font-weight:700;">Quantity</div>
       <input id="qty" type="number" min="1" max="20" value="1" class="mint-input">
 
       <button id="connectBtn" class="btn-primary" style="width:100%;margin-top:16px;">
@@ -59,20 +58,6 @@
   </footer>
 
 </div>
-
-<script>
-const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; // cambia luego
-const RPC_URL = "https://mainnet.base.org";
-
-const ABI = [
-  "function mint(uint256 quantity) external payable",
-  "function MINT_PRICE() view returns (uint256)",
-  "function totalMinted() view returns (uint256)",
-  "function MAX_SUPPLY() view returns (uint256)"
-];
-
-// aquí solo dejamos placeholder, tú luego me dices contrato y lo cableamos bien
-</script>
 
 </body>
 </html>
