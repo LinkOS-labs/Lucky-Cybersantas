@@ -9,13 +9,13 @@
 
 <body>
 
-<div class="snow">
-  <div style="left:10%; animation-delay:0s;"></div>
-  <div style="left:25%; animation-delay:1s;"></div>
-  <div style="left:40%; animation-delay:2s;"></div>
-  <div style="left:60%; animation-delay:0.5s;"></div>
-  <div style="left:75%; animation-delay:1.8s;"></div>
-  <div style="left:90%; animation-delay:0.7s;"></div>
+<!-- EFFECTS -->
+<div class="snow"><div style="left:10%;"></div><div style="left:30%;"></div><div style="left:60%;"></div></div>
+<div class="snow2"><div style="left:5%;"></div><div style="left:50%;"></div><div style="left:85%;"></div></div>
+<div class="snow3"><div style="left:20%;"></div><div style="left:55%;"></div><div style="left:95%;"></div></div>
+<div class="particles">
+  <div style="left:40%; top:30%;"></div>
+  <div style="left:70%; top:60%;"></div>
 </div>
 
 <header class="navbar">
@@ -33,23 +33,23 @@
 </header>
 
 <main>
-<section class="section">
-  <h2 class="hero-title" style="font-size:48px;">Mint Cyber Santa</h2>
+<section class="hero">
+
+  <h1 class="hero-title" style="font-size:58px;">MINT YOUR CYBER SANTA</h1>
 
   <p class="hero-sub">
-    Mint price: <strong>0.0001 ETH</strong> · Base Network
+    Mint Price: <strong>0.0001 ETH</strong> · Base Network  
+    Blessings for 2026 included.
   </p>
 
-  <div id="supply" class="hero-sub" style="margin-bottom:18px;">
-    Loading supply…
-  </div>
+  <div id="supply" class="hero-sub" style="margin-bottom:20px;">Loading supply…</div>
 
   <div class="mint-card">
-    <div class="mint-label">Quantity</div>
 
+    <div class="mint-label">Quantity</div>
     <input id="qty" type="number" class="mint-input" value="1" min="1" max="20">
 
-    <button id="connectBtn" class="btn-primary" style="width:100%;margin-top:10px;">
+    <button id="connectBtn" class="btn-primary" style="width:100%;margin-top:12px;">
       Connect Wallet
     </button>
 
@@ -57,17 +57,19 @@
       Mint Cyber Santa
     </button>
 
-    <div id="status" style="margin-top:15px;">Status: Idle</div>
+    <div id="status" style="margin-top:12px;">Status: Idle</div>
+
   </div>
+
 </section>
 </main>
 
 <footer class="footer">
-  Contract: to be updated
+  Contract: To be updated
 </footer>
 
 <script>
-const CONTRACT_ADDRESS = "0x0000000000000000000000000000000000000000"; 
+const CONTRACT_ADDRESS = "0x000000000000000000000000000000"; // Cambiar cuando me digas
 const RPC_URL = "https://mainnet.base.org";
 
 const ABI = [
