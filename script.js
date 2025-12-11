@@ -1,14 +1,14 @@
-// Loader simple
+/* LOADER FIX */
 window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  if (loader) {
-    setTimeout(() => loader.classList.add("hidden"), 400);
-  }
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (loader) loader.style.display = "none";
+  }, 800);
 });
 
-// Nieve 3D
-const snowLayer = document.getElementById("snow-layer");
-if (snowLayer) {
+/* SNOW 3D GENERATOR */
+const snow = document.getElementById("snow-layer");
+if (snow) {
   for (let i = 0; i < 120; i++) {
     const f = document.createElement("div");
     f.className = "flake";
@@ -17,42 +17,39 @@ if (snowLayer) {
     f.style.height = size + "px";
     f.style.left = Math.random() * 100 + "%";
     f.style.animationDuration = 5 + Math.random() * 10 + "s";
-    f.style.animationDelay = Math.random() * 5 + "s";
-    snowLayer.appendChild(f);
+    snow.appendChild(f);
   }
 }
 
-// Luz que sigue al ratón
-document.addEventListener("mousemove", (e) => {
+/* LIGHT FOLLOW MOUSE */
+document.addEventListener("mousemove", e => {
   document.documentElement.style.setProperty("--mx", e.clientX + "px");
   document.documentElement.style.setProperty("--my", e.clientY + "px");
 });
 
-// Física simple para Santa flotando
+/* SANTA FLOATING PHYSICS */
 const santa = document.getElementById("santa");
 if (santa) {
-  let vx = 0, vy = 0;
-  let px = 0, py = 0;
-  let targetX = 0, targetY = 0;
+  let x = 0, y = 0, vx = 0, vy = 0, tx = 0, ty = 0;
 
-  document.addEventListener("mousemove", (e) => {
-    targetX = (e.clientX - window.innerWidth / 2) * 0.03;
-    targetY = (e.clientY - window.innerHeight / 2) * 0.03;
+  document.addEventListener("mousemove", e => {
+    tx = (e.clientX - window.innerWidth / 2) * 0.03;
+    ty = (e.clientY - window.innerHeight / 2) * 0.03;
   });
 
-  function tick() {
-    vx += (targetX - px) * 0.02;
-    vy += (targetY - py) * 0.02;
+  function animate() {
+    vx += (tx - x) * 0.02;
+    vy += (ty - y) * 0.02;
 
-    px += vx;
-    py += vy;
+    x += vx; 
+    y += vy;
 
     vx *= 0.9;
     vy *= 0.9;
 
-    santa.style.transform = `translate(${px}px, ${py}px)`;
+    santa.style.transform = `translate(${x}px, ${y}px)`;
 
-    requestAnimationFrame(tick);
+    requestAnimationFrame(animate);
   }
-  tick();
+  animate();
 }
